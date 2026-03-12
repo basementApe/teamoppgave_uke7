@@ -16,18 +16,47 @@ model =
                 {
                     navn: "banan",
                     pris: 15,
+                    antall: 1,
                 },
                 {
                     navn: "tomat",
                     pris: 30,
+                    antall: 1,
                 },
                 {
                     navn: "eple",
                     pris: 20,
+                    antall: 1,
                 },
                 {
                     navn: "gulrot",
                     pris: 40,
+                    antall: 1,
+                },
+                {
+                    navn: "hummus",
+                    pris: 50,
+                    antall: 1,
+                },
+                {
+                    navn: "kimchi",
+                    pris: 30,
+                    antall: 1,
+                },
+                {
+                    navn: "appelsinjuice",
+                    pris: 20,
+                    antall: 1,
+                },
+                {
+                    navn: "olivenolje",
+                    pris: 60,
+                    antall: 1,
+                },
+                {
+                    navn: "grandiss",
+                    pris: 70,
+                    antall: 1,
                 },
             ]
         },
@@ -38,39 +67,3 @@ model =
     }
 }
 
-let feilMelding = "";
-
-function leggTilVare(vareNavn)
-{
-    let kurvinnhold = model.app.handlekurv.varer;
-    let utvalg = model.app.utvalg.varer;
-    for (let i = 0; i < kurvinnhold.length; i++)
-    {
-        if (kurvinnhold[i].navn == vareNavn)
-            return;
-    }
-    let gyldigVare = null;
-    for (let u = 0; u < utvalg.length; u++)
-    {
-        if (utvalg[u].navn == vareNavn)
-            gyldigVare = utvalg[u];
-    }
-    if (!gyldigVare)
-    {
-        feilMelding = `varen finnes ikke!<br>`;
-        updateView();
-        return;
-    }
-    feilMelding = "";   // nullstill
-
-    model.app.handlekurv.varer.push(gyldigVare);
-
-    updateView();
-}
-
-
-function fjernVare(index)
-{
-    model.app.handlekurv.varer.splice(index, 1);
-    updateView();
-}
