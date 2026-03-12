@@ -42,3 +42,29 @@ function reduserAntall(index)
         fjernVare(index);
     updateView();
 }
+
+
+// funker ikke ordentlig ennå; input-feltet mister fokus så fort jeg skriver noe
+function finnVare(tekst)
+{
+    let matcher = model.app.utvalg.varer;
+    for (let i = 0; i < matcher.length; i++)
+    {
+        if (!matcher[i].navn.includes(tekst))
+            matcher.splice(i, 1);
+    }
+    // console.log(matcher);
+    model.app.søk.varer = matcher;
+    updateView();
+}
+
+
+// funker ikke i det hele tatt for øyeblikket
+function sjekkSøkerFelt(tekst)
+{
+    if (tekst == "" || !tekst)
+    {
+        model.app.søk.varer = [];
+    }
+    updateView();
+}

@@ -3,7 +3,7 @@ function updateView()
 {
     let html = "";
     // html = visVare() + visUtvalg() + feilMelding + visHandlekurv();
-    html = visUtvalg() + visHandlekurv();
+    html = visSokeFelt() + visUtvalg() + visHandlekurv();
     model.app.app.innerHTML = /*HTML*/ `
         <main>${html}</main>
     `;
@@ -20,10 +20,25 @@ function visVare()
 }
 
 
+function visSokeFelt()
+{
+    return /*HTML*/ `
+        <div>
+            <input type="text" placeholder="Søk etter vare" oninput="finnVare(this.value)">
+        </div>
+        <br>
+    `;
+}
+
+
+
 function visUtvalg()
 {
     let html = ``;
     let utvalg = model.app.utvalg.varer;
+    if (model.app.søk.varer.length > 0)
+        utvalg = model.app.søk.varer;
+
     for (let i = 0; i < utvalg.length; i++)
     {
         let _navn = utvalg[i].navn;

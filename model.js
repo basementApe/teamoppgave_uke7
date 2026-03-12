@@ -64,6 +64,10 @@ model =
         {
             varer: []
         },
+        søk:
+        {
+            varer: []
+        }
     }
 }
 
