@@ -1,0 +1,55 @@
+
+#id_totalpris 
+{
+    margin-left: auto;
+    margin-right: 16px; /* distance from right edge */
+    display: block;     /* or inline-block with parent using flex */
+    width: max-content; /* so it hugs content */
+    border: 1px solid #888888;
+    padding: 6px;
+    border-radius: 3px;
+}
+
+
+/* Left selection stays in normal flow at left */
+.class_utvalg {
+  display: inline-block;
+  vertical-align: top;
+  margin: 16px;
+}
+
+
+/* Make left items appear as stacked rows (each .class_utvalg is a block) */
+.class_utvalg { display: block; }
+.class_utvalg .utvalg_item { display: inline-block; white-space: nowrap; }
+
+
+/* fixed cart container pinned to the right of the viewport */
+#cart_container {
+  position: fixed;
+  right: 16px;
+  top: 16px;
+  max-width: 40vw;
+  background: #fff;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+}
+
+/* individual cart items stack vertically inside the container */
+.class_kurv {
+  position: static; /* ensure they are normal flow inside the container */
+  display: block;
+  margin: 6px 0;
+  padding: 4px 0;
+}
+
+/* keep name, price and button on one horizontal row per item */
+.class_kurv .kurv_item {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  gap: 8px;
+}
